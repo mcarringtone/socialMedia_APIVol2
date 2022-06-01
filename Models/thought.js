@@ -10,6 +10,14 @@ const thoughtSchema = new Schema({
   createdAt: {
     type: date,
     default: date.now(),
-    get: (dateFormat = moment(dateFormat)),
+    get: (dateFormat = moment(dateFormat).format("MM do yy")),
   },
+  username: {
+    type: string,
+    required: true,
+  },
+  reactions: [reactionSchema],
 });
+const thought = model("thought", thoughtSchema);
+
+module.exports = thought;

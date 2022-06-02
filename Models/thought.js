@@ -2,18 +2,18 @@ const { Schema, model } = require("mongoose");
 const reactionSchema = require("./reaction");
 const thoughtSchema = new Schema({
   throughText: {
-    type: string,
+    type: String,
     required: true,
     Minlength: 1,
     Maxlength: 280,
   },
   createdAt: {
-    type: date,
-    default: date.now(),
-    get: (dateFormat = moment(dateFormat).format("MM do yy")),
+    type: Date,
+    default: Date.now(),
+    get: (dateFormat) => moment(dateFormat).format("MM Do YY"),
   },
   username: {
-    type: string,
+    type: String,
     required: true,
   },
   reactions: [reactionSchema],
